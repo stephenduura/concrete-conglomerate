@@ -1,16 +1,20 @@
 import { useInView } from "@/hooks/useInView";
 
-const clients = [
-  { name: "CHEVRON", abbr: "CVX" },
-  { name: "SHELL", abbr: "SPDC" },
-  { name: "ENI", abbr: "ENI" },
-  { name: "OANDO", abbr: "OAN" },
-  { name: "NPDC", abbr: "NPDC" },
-  { name: "NDDC", abbr: "NDDC" },
+const partners = [
+  { name: "Chevron", logo: "/manus-storage/pINjVTI26kJN_f4e6d74e.png" },
+  { name: "Shell", logo: "/manus-storage/Ut3mibcT2oiW_ebcc29bc.png" },
+  { name: "ENI", logo: "/manus-storage/GWWovJSSBgCN_86567895.jpg" },
+  { name: "Oando", logo: "/manus-storage/RX7jlTt0wvmZ_b4008689.png" },
+  { name: "NPDC", logo: "/manus-storage/5sPgVT8cgJTS_aebd9314.jpg" },
+  { name: "NDDC", logo: "/manus-storage/ZfAhj84VYTJl_d0463585.jpg" },
+  { name: "Concrete Conglomerate", logo: "/manus-storage/1782362263601_1f8e9c3c.jpg" },
 ];
 
 export default function ClientsSection() {
   const [ref, inView] = useInView({ threshold: 0.2 });
+
+  // Double the array for seamless infinite scroll
+  const duplicatedPartners = [...partners, ...partners];
 
   return (
     <section
@@ -42,40 +46,78 @@ export default function ClientsSection() {
             <br />
             <span className="text-[#C41E24]">INDUSTRY LEADERS</span>
           </h2>
-          <p className="mt-6 text-[#8A8A8A] text-base md:text-lg font-light leading-relaxed">
-            We partner with International Oil Companies, EPC contractors, and
-            government agencies across Nigeria's energy sector.
-          </p>
         </div>
 
-        {/* Client Logos Grid */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {clients.map((client, i) => (
-            <div
-              key={client.name}
-              className={`group relative flex flex-col items-center justify-center p-8 bg-[#2D2D2D] border border-white/5 hover:border-[#C41E24]/30 transition-all duration-500 ${
-                inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
-              style={{
-                transitionTimingFunction: "var(--ease-out-smooth)",
-                transitionDelay: `${i * 100 + 300}ms`,
-              }}
-            >
-              <span className="font-display text-3xl text-[#8A8A8A] group-hover:text-white transition-colors duration-300">
-                {client.abbr}
-              </span>
-              <span className="mt-2 font-mono text-[9px] uppercase tracking-widest text-[#4A4A4A] group-hover:text-[#C41E24] transition-colors duration-300">
-                {client.name}
-              </span>
-              {/* Hover line */}
-              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C41E24] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </div>
-          ))}
+        {/* Animated Logo Carousel */}
+        <div
+          className={`mt-16 relative overflow-hidden transition-all duration-700 delay-300 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}
+        >
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#1A1A1A] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#1A1A1A] to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling track */}
+          <div className="flex animate-scroll-left">
+            {duplicatedPartners.map((partner, i) => (
+              <div
+                key={`${partner.name}-${i}`}
+                className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center"
+              >
+                <div className="group relative w-36 h-36 md:w-44 md:h-44 bg-white/5 border border-white/10 hover:border-[#C41E24]/40 rounded-lg flex items-center justify-center p-6 transition-all duration-500 hover:bg-white/10">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="max-w-full max-h-full object-contain filter brightness-100 group-hover:brightness-110 transition-all duration-300"
+                  />
+                  {/* Name tooltip on hover */}
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-[#C41E24] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {partner.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Second row - reverse direction */}
+        <div
+          className={`mt-16 relative overflow-hidden transition-all duration-700 delay-500 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}
+        >
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#1A1A1A] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#1A1A1A] to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling track - reverse */}
+          <div className="flex animate-scroll-right">
+            {[...duplicatedPartners].reverse().map((partner, i) => (
+              <div
+                key={`rev-${partner.name}-${i}`}
+                className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center"
+              >
+                <div className="group relative w-36 h-36 md:w-44 md:h-44 bg-white/5 border border-white/10 hover:border-[#C41E24]/40 rounded-lg flex items-center justify-center p-6 transition-all duration-500 hover:bg-white/10">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="max-w-full max-h-full object-contain filter brightness-100 group-hover:brightness-110 transition-all duration-300"
+                  />
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-[#C41E24] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {partner.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Additional credibility */}
         <div
-          className={`mt-16 flex flex-wrap justify-center gap-8 md:gap-16 transition-all duration-700 delay-700 ${
+          className={`mt-20 flex flex-wrap justify-center gap-8 md:gap-16 transition-all duration-700 delay-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}

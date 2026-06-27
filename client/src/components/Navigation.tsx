@@ -34,9 +34,9 @@ export default function Navigation() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
           <img
-            src="/manus-storage/brand-logo_d998534d.png"
+            src="/manus-storage/1782362263601_1f8e9c3c.jpg"
             alt="Concrete Conglomerate"
-            className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="h-12 w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
           />
           <div className="hidden sm:block">
             <span className="font-display text-xl tracking-wider text-white">
