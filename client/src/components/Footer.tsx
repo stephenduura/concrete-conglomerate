@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 md:gap-3">
               <img
                 src="/manus-storage/1782362263601_1f8e9c3c.jpg"
-                alt="Concrete Conglomerate"
+                alt="Concrete Petroleum & Gas Ltd"
                 className="h-10 w-10 md:h-12 md:w-12 object-contain rounded-full"
               />
               <div>
@@ -17,7 +17,7 @@ export default function Footer() {
                   CONCRETE
                 </span>
                 <span className="font-display text-base md:text-lg tracking-wider text-[#C41E24] ml-1">
-                  CONGLOMERATE
+                  PETROLEUM & GAS
                 </span>
               </div>
             </div>

@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
 
   const whatsappNumber = "2348082061336";
   const whatsappMessage = encodeURIComponent(
-    "Hello, I would like to inquire about your services at Concrete Conglomerate."
+    "Hello, I would like to inquire about your services at Concrete Petroleum & Gas Ltd."
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
