@@ -60,7 +60,10 @@ export default function HeroSection() {
             CONCRETE
           </span>
           <span className="font-display text-[clamp(2.5rem,10vw,7rem)] leading-[0.9] text-[#C41E24] block">
-            CONGLOMERATE
+            PETROLEUM
+          </span>
+          <span className="font-display text-[clamp(1.8rem,6vw,4.5rem)] leading-[0.9] text-white/80 block">
+            & GAS LTD
           </span>
         </h1>
 
