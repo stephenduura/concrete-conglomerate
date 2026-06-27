@@ -25,24 +25,24 @@ export default function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#1A1A1A]/95 backdrop-blur-xl border-b border-white/5 py-3"
-          : "bg-transparent py-5"
+          ? "bg-[#1A1A1A]/95 backdrop-blur-xl border-b border-white/5 py-2 md:py-3"
+          : "bg-[#1A1A1A]/80 md:bg-transparent py-2 md:py-5"
       }`}
       style={{ transitionTimingFunction: "var(--ease-industrial)" }}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="#" className="flex items-center gap-2 md:gap-3 group">
           <img
             src="/manus-storage/1782362263601_1f8e9c3c.jpg"
             alt="Concrete Conglomerate"
-            className="h-12 w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
+            className="h-8 w-8 md:h-12 md:w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
           />
           <div className="hidden sm:block">
-            <span className="font-display text-xl tracking-wider text-white">
+            <span className="font-display text-base md:text-xl tracking-wider text-white">
               CONCRETE
             </span>
-            <span className="font-display text-xl tracking-wider text-[#C41E24] ml-1">
+            <span className="font-display text-base md:text-xl tracking-wider text-[#C41E24] ml-1">
               CONGLOMERATE
             </span>
           </div>
@@ -73,7 +73,7 @@ export default function Navigation() {
           className="lg:hidden text-white p-2"
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 

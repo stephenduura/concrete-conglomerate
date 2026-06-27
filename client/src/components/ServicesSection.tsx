@@ -47,7 +47,7 @@ export default function ServicesSection() {
     <section
       id="services"
       ref={ref}
-      className="relative py-24 md:py-32 bg-[#1A1A1A]"
+      className="relative py-16 md:py-24 lg:py-32 bg-[#1A1A1A]"
     >
       <div className="container">
         {/* Section Header */}
@@ -57,22 +57,22 @@ export default function ServicesSection() {
           }`}
           style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}
         >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#C41E24]">
+          <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#C41E24]">
             Core Capabilities
           </span>
-          <h2 className="mt-4 font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.95] text-white">
+          <h2 className="mt-3 md:mt-4 font-display text-[clamp(2rem,5vw,4.5rem)] leading-[0.95] text-white">
             INTEGRATED SOLUTIONS
             <br />
             <span className="text-[#C41E24]">ACROSS THE VALUE CHAIN</span>
           </h2>
-          <p className="mt-6 text-[#8A8A8A] text-base md:text-lg font-light leading-relaxed">
+          <p className="mt-4 md:mt-6 text-[#8A8A8A] text-sm md:text-base lg:text-lg font-light leading-relaxed">
             From exploration to distribution, we deliver technically demanding
             projects with discipline, safety, and commercial rigor.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} parentInView={inView} />
           ))}
@@ -104,7 +104,7 @@ function ServiceCard({
       }}
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-36 md:h-48 overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
@@ -112,17 +112,18 @@ function ServiceCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-[#2D2D2D]/30 to-transparent" />
         {/* Icon overlay */}
-        <div className="absolute bottom-4 left-4 w-10 h-10 bg-[#C41E24] flex items-center justify-center">
-          <Icon size={20} className="text-white" />
+        <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 w-8 h-8 md:w-10 md:h-10 bg-[#C41E24] flex items-center justify-center">
+          <Icon size={16} className="text-white md:hidden" />
+          <Icon size={20} className="text-white hidden md:block" />
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="font-display text-xl text-white tracking-wide">
+      <div className="p-4 md:p-6">
+        <h3 className="font-display text-lg md:text-xl text-white tracking-wide">
           {service.title}
         </h3>
-        <p className="mt-3 text-sm text-[#8A8A8A] font-light leading-relaxed">
+        <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#8A8A8A] font-light leading-relaxed">
           {service.description}
         </p>
       </div>

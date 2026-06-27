@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
     <section
       id="why-us"
       ref={ref}
-      className="relative py-24 md:py-32 bg-[#2D2D2D]"
+      className="relative py-16 md:py-24 lg:py-32 bg-[#2D2D2D]"
     >
       <div className="container">
         {/* Section Header */}
@@ -59,10 +59,10 @@ export default function WhyChooseUs() {
           }`}
           style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}
         >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#C41E24]">
+          <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#C41E24]">
             Operating Philosophy
           </span>
-          <h2 className="mt-4 font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.95] text-white">
+          <h2 className="mt-3 md:mt-4 font-display text-[clamp(2rem,5vw,4.5rem)] leading-[0.95] text-white">
             WE DON'T PITCH.
             <br />
             <span className="text-[#C41E24]">WE EXECUTE.</span>
@@ -70,11 +70,11 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Principles */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           {principles.map((principle, i) => (
             <div
               key={principle.number}
-              className={`relative p-8 border border-white/5 bg-[#1A1A1A]/50 transition-all duration-700 ${
+              className={`relative p-5 md:p-8 border border-white/5 bg-[#1A1A1A]/50 transition-all duration-700 ${
                 inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
               style={{
@@ -82,38 +82,38 @@ export default function WhyChooseUs() {
                 transitionDelay: `${i * 150 + 200}ms`,
               }}
             >
-              <span className="font-display text-5xl text-[#C41E24]/20">
+              <span className="font-display text-4xl md:text-5xl text-[#C41E24]/20">
                 {principle.number}
               </span>
-              <h3 className="mt-4 font-display text-2xl text-white tracking-wide">
+              <h3 className="mt-2 md:mt-4 font-display text-xl md:text-2xl text-white tracking-wide">
                 {principle.title}
               </h3>
-              <p className="mt-4 text-sm text-[#8A8A8A] font-light leading-relaxed">
+              <p className="mt-2 md:mt-4 text-xs md:text-sm text-[#8A8A8A] font-light leading-relaxed">
                 {principle.description}
               </p>
               {/* Bottom accent */}
-              <div className="absolute bottom-0 left-0 w-16 h-[2px] bg-[#C41E24]" />
+              <div className="absolute bottom-0 left-0 w-12 md:w-16 h-[2px] bg-[#C41E24]" />
             </div>
           ))}
         </div>
 
         {/* Why Partner */}
-        <div className="mt-20">
+        <div className="mt-12 md:mt-20">
           <h3
-            className={`font-display text-3xl text-white text-center mb-12 transition-all duration-700 delay-500 ${
+            className={`font-display text-2xl md:text-3xl text-white text-center mb-8 md:mb-12 transition-all duration-700 delay-500 ${
               inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{ transitionTimingFunction: "var(--ease-out-smooth)" }}
           >
             WHY PARTNER WITH <span className="text-[#C41E24]">CONCRETE</span>
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {reasons.map((reason, i) => {
               const Icon = reason.icon;
               return (
                 <div
                   key={reason.title}
-                  className={`group p-6 bg-[#1A1A1A] border border-white/5 hover:border-[#C41E24]/30 transition-all duration-500 ${
+                  className={`group p-4 md:p-6 bg-[#1A1A1A] border border-white/5 hover:border-[#C41E24]/30 transition-all duration-500 ${
                     inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                   }`}
                   style={{
@@ -121,13 +121,13 @@ export default function WhyChooseUs() {
                     transitionDelay: `${i * 100 + 600}ms`,
                   }}
                 >
-                  <div className="w-12 h-12 bg-[#C41E24]/10 flex items-center justify-center mb-4 group-hover:bg-[#C41E24]/20 transition-colors duration-300">
-                    <Icon size={24} className="text-[#C41E24]" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-[#C41E24]/10 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#C41E24]/20 transition-colors duration-300">
+                    <Icon size={20} className="text-[#C41E24]" />
                   </div>
-                  <h4 className="font-display text-lg text-white tracking-wide">
+                  <h4 className="font-display text-base md:text-lg text-white tracking-wide">
                     {reason.title}
                   </h4>
-                  <p className="mt-3 text-sm text-[#8A8A8A] font-light leading-relaxed">
+                  <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#8A8A8A] font-light leading-relaxed">
                     {reason.description}
                   </p>
                 </div>
