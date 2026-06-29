@@ -18,7 +18,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/manus-storage/hero-bg_ee06398c.jpg"
+          src="/images/hero-bg.png"
           alt="Offshore oil platform at twilight"
           className="w-full h-full object-cover"
         />
