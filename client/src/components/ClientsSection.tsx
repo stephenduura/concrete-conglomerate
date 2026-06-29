@@ -7,7 +7,7 @@ const partners = [
   { name: "Oando", logo: "/manus-storage/RX7jlTt0wvmZ_b4008689.png" },
   { name: "NPDC", logo: "/manus-storage/5sPgVT8cgJTS_aebd9314.jpg" },
   { name: "NDDC", logo: "/manus-storage/ZfAhj84VYTJl_d0463585.jpg" },
-  { name: "Concrete Petroleum & Gas", logo: "/manus-storage/1782362263601_1f8e9c3c.jpg" },
+  { name: "Concrete Petroleum & Gas", logo: "/images/logo.png" },
 ];
 
 export default function ClientsSection() {

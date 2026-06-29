@@ -34,7 +34,7 @@ export default function Navigation() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 md:gap-3 group">
           <img
-            src="/manus-storage/1782362263601_1f8e9c3c.jpg"
+            src="/images/logo.png"
             alt="Concrete Petroleum & Gas Ltd"
             className="h-8 w-8 md:h-12 md:w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
           />

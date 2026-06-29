@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 md:gap-3">
               <img
-                src="/manus-storage/1782362263601_1f8e9c3c.jpg"
+                src="/images/logo.png"
                 alt="Concrete Petroleum & Gas Ltd"
                 className="h-10 w-10 md:h-12 md:w-12 object-contain rounded-full"
               />
