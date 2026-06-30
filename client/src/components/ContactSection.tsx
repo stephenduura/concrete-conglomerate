@@ -6,13 +6,13 @@ import { toast } from "sonner";
 
 const branches = {
   warri: {
-    lat: 5.5562,
-    lng: 5.7835,
+    lat: 5.5279153,
+    lng: 5.7734727,
     title: "Headquarters (Warri, Nigeria)",
   },
   london: {
-    lat: 51.5283,
-    lng: -0.0901,
+    lat: 51.5325,
+    lng: -0.0865,
     title: "International Office (London, UK)",
   },
 };
@@ -28,7 +28,7 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const mapRef = useRef<google.maps.Map | null>(null);
+  const mapRef = useRef<any>(null);
   const markerRef = useRef<any>(null);
   const [activeBranch, setActiveBranch] = useState<"warri" | "london">("warri");
 
@@ -36,23 +36,22 @@ export default function ContactSection() {
     setActiveBranch(branch);
     const selected = branches[branch];
     if (mapRef.current) {
-      mapRef.current.panTo({ lat: selected.lat, lng: selected.lng });
-      mapRef.current.setZoom(15);
-      if (markerRef.current) {
-        markerRef.current.position = { lat: selected.lat, lng: selected.lng };
+      mapRef.current.setView([selected.lat, selected.lng], 15);
+      if (markerRef.current && window.L) {
+        markerRef.current.setLatLng([selected.lat, selected.lng]);
+        markerRef.current.bindPopup(`<b>${selected.title}</b>`).openPopup();
       }
     }
   };
 
-  const handleMapReady = (mapInstance: google.maps.Map) => {
+  const handleMapReady = (mapInstance: any) => {
     mapRef.current = mapInstance;
     const initial = branches[activeBranch];
-    if (window.google?.maps?.marker?.AdvancedMarkerElement) {
-      const marker = new window.google.maps.marker.AdvancedMarkerElement({
-        map: mapInstance,
-        position: { lat: initial.lat, lng: initial.lng },
-        title: initial.title,
-      });
+    if (window.L) {
+      const marker = window.L.marker([initial.lat, initial.lng])
+        .addTo(mapInstance)
+        .bindPopup(`<b>${initial.title}</b>`)
+        .openPopup();
       markerRef.current = marker;
     }
   };
