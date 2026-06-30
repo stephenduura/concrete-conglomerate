@@ -372,9 +372,9 @@ export default function LeadershipSection() {
             Leadership
           </span>
           <h2 className="mt-3 md:mt-4 font-display text-[clamp(2rem,5vw,4.5rem)] leading-[0.95] text-white">
-            THE FORCE
+            THE CONCRETE
             <br />
-            <span className="text-[#C41E24]">BEHIND EXECUTION</span>
+            <span className="text-[#C41E24]">TEAM</span>
           </h2>
           <p className="mt-4 text-[#8A8A8A] text-sm md:text-base font-light max-w-lg mx-auto">
             Meet the experienced leaders driving Concrete Petroleum & Gas Ltd's
