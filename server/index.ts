@@ -33,11 +33,12 @@ async function startServer() {
     console.log("-----------------------------------------");
 
     const host = process.env.SMTP_HOST;
-    const port = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
+    const port = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 465;
     const user = process.env.SMTP_USER;
     const pass = process.env.SMTP_PASS;
     const receiver = process.env.SMTP_RECEIVER || "contact@concreteconglomerate.com";
-    const sender = process.env.SMTP_SENDER || `"Concrete Contact" <no-reply@concreteconglomerate.com>`;
+    // Hostinger SMTP requires the 'from' address to match the authenticated SMTP user
+    const sender = process.env.SMTP_SENDER || `"${name} via Website" <${user || "contact@concreteconglomerate.com"}>`;
 
     // If SMTP variables are missing, fallback to simulated success in dev
     if (!host || !user || !pass) {
