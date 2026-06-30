@@ -1,6 +1,21 @@
 import { useInView } from "@/hooks/useInView";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { MapView } from "./Map";
+import { toast } from "sonner";
+
+const branches = {
+  warri: {
+    lat: 5.5562,
+    lng: 5.7835,
+    title: "Headquarters (Warri, Nigeria)",
+  },
+  london: {
+    lat: 51.5283,
+    lng: -0.0901,
+    title: "International Office (London, UK)",
+  },
+};
 
 export default function ContactSection() {
   const [ref, inView] = useInView({ threshold: 0.1 });
@@ -11,16 +26,61 @@ export default function ContactSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const markerRef = useRef<any>(null);
+  const [activeBranch, setActiveBranch] = useState<"warri" | "london">("warri");
+
+  const handleBranchChange = (branch: "warri" | "london") => {
+    setActiveBranch(branch);
+    const selected = branches[branch];
+    if (mapRef.current) {
+      mapRef.current.panTo({ lat: selected.lat, lng: selected.lng });
+      mapRef.current.setZoom(15);
+      if (markerRef.current) {
+        markerRef.current.position = { lat: selected.lat, lng: selected.lng };
+      }
+    }
+  };
+
+  const handleMapReady = (mapInstance: google.maps.Map) => {
+    mapRef.current = mapInstance;
+    const initial = branches[activeBranch];
+    if (window.google?.maps?.marker?.AdvancedMarkerElement) {
+      const marker = new window.google.maps.marker.AdvancedMarkerElement({
+        map: mapInstance,
+        position: { lat: initial.lat, lng: initial.lng },
+        title: initial.title,
+      });
+      markerRef.current = marker;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Inquiry from ${formData.name} - ${formData.company}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:contact@concreteconglomerate.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", company: "", message: "" });
+        toast.success("Operational brief requested successfully");
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        toast.error("Failed to submit inquiry. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -209,10 +269,13 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#C41E24] text-white font-mono text-[10px] md:text-xs uppercase tracking-widest hover:bg-[#E8333A] transition-all duration-300 active:scale-[0.97]"
+                  disabled={loading}
+                  className="w-full flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-[#C41E24] text-white font-mono text-[10px] md:text-xs uppercase tracking-widest hover:bg-[#E8333A] transition-all duration-300 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitted ? (
-                    "Opening Email Client..."
+                  {loading ? (
+                    "Sending..."
+                  ) : submitted ? (
+                    "Inquiry Sent Successfully"
                   ) : (
                     <>
                       <Send size={14} />
@@ -222,6 +285,54 @@ export default function ContactSection() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+        {/* Interactive Map Section */}
+        <div className="mt-16 md:mt-24 border border-white/5 bg-[#2D2D2D]/35 p-4 md:p-6 rounded-lg animate-fade-in">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+            <div>
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[#C41E24]">
+                Office Locations
+              </span>
+              <h3 className="font-display text-xl md:text-2xl text-white tracking-wide mt-1">
+                INTERACTIVE DIRECTIONS
+              </h3>
+            </div>
+
+            {/* Branch Switcher Tabs */}
+            <div className="flex bg-[#1A1A1A] p-1 border border-white/5 rounded">
+              <button
+                type="button"
+                onClick={() => handleBranchChange("warri")}
+                className={`px-4 py-2 font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
+                  activeBranch === "warri"
+                    ? "bg-[#C41E24] text-white"
+                    : "text-[#8A8A8A] hover:text-white"
+                }`}
+              >
+                Warri HQ
+              </button>
+              <button
+                type="button"
+                onClick={() => handleBranchChange("london")}
+                className={`px-4 py-2 font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
+                  activeBranch === "london"
+                    ? "bg-[#C41E24] text-white"
+                    : "text-[#8A8A8A] hover:text-white"
+                }`}
+              >
+                London Office
+              </button>
+            </div>
+          </div>
+
+          <div className="h-[350px] md:h-[450px] overflow-hidden rounded border border-white/5 relative">
+            <MapView
+              className="w-full h-full"
+              initialCenter={{ lat: branches.warri.lat, lng: branches.warri.lng }}
+              initialZoom={14}
+              onMapReady={handleMapReady}
+            />
           </div>
         </div>
       </div>
