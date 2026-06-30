@@ -18,7 +18,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero-bg.png"
+          src="/images/hero-bg.jpg"
           alt="Offshore oil platform at twilight"
           className="w-full h-full object-cover"
         />
@@ -102,12 +102,15 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-[#8A8A8A]">
+      <a
+        href="#about"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer group"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-widest text-[#8A8A8A] group-hover:text-white transition-colors duration-300">
           Scroll
         </span>
-        <ChevronDown size={16} className="text-[#C41E24]" />
-      </div>
+        <ChevronDown size={16} className="text-[#C41E24] group-hover:text-[#E8333A] transition-colors duration-300" />
+      </a>
 
       {/* Corner accent */}
       <div className="hidden md:block absolute top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-[#C41E24]/30" />

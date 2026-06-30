@@ -1,12 +1,12 @@
 import { useInView } from "@/hooks/useInView";
 
 const partners = [
-  { name: "Chevron", logo: "/manus-storage/pINjVTI26kJN_f4e6d74e.png" },
-  { name: "Shell", logo: "/manus-storage/Ut3mibcT2oiW_ebcc29bc.png" },
-  { name: "ENI", logo: "/manus-storage/GWWovJSSBgCN_86567895.jpg" },
-  { name: "Oando", logo: "/manus-storage/RX7jlTt0wvmZ_b4008689.png" },
-  { name: "NPDC", logo: "/manus-storage/5sPgVT8cgJTS_aebd9314.jpg" },
-  { name: "NDDC", logo: "/manus-storage/ZfAhj84VYTJl_d0463585.jpg" },
+  { name: "Chevron", logo: "/images/logo-chevron.png" },
+  { name: "Shell", logo: "/images/logo-shell.png" },
+  { name: "ENI", logo: "/images/logo-eni.jpg" },
+  { name: "Oando", logo: "/images/logo-oando.png" },
+  { name: "NPDC", logo: "/images/logo-npdc.jpg" },
+  { name: "NDDC", logo: "/images/logo-nddc.jpg" },
   { name: "Concrete Petroleum & Gas", logo: "/images/logo.png" },
 ];
 

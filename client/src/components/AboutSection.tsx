@@ -91,7 +91,7 @@ export default function AboutSection() {
           >
             <div className="relative">
               <img
-                src="/manus-storage/about-section_366499d5.jpg"
+                src="/images/about-vessel.jpg"
                 alt="Marine support vessel in Nigerian waters"
                 className="w-full h-[280px] md:h-[400px] lg:h-[500px] object-cover"
               />

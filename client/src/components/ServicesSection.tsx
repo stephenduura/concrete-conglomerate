@@ -6,37 +6,37 @@ const services = [
     icon: Anchor,
     title: "Upstream & Offshore Services",
     description: "Drilling and exploration support, crude oil trading, provision and management of rigs, vessels, and marine assets. Complete marine logistics and offshore support services.",
-    image: "/manus-storage/drilling-platform_84d77d0d.jpg",
+    image: "/images/service-upstream.jpg",
   },
   {
     icon: Droplets,
     title: "Downstream & Product Marketing",
     description: "Marketing and distribution of refined petroleum products. Supply of chemicals and industrial raw materials for energy and manufacturing sectors.",
-    image: "/manus-storage/refinery-night_f7b4cf70.jpg",
+    image: "/images/service-downstream.jpg",
   },
   {
     icon: HardHat,
     title: "Engineering, Procurement & Construction",
     description: "EPC and EPCm delivery for facilities, plants, and pipeline systems. Installation, commissioning, maintenance, and repair of energy infrastructure.",
-    image: "/manus-storage/services-epc_e44ffc3e.jpg",
+    image: "/images/service-epc.jpg",
   },
   {
     icon: Zap,
     title: "Power & Gas Infrastructure",
     description: "Electricity generation and supply to industrial and commercial clients. Gas supply, processing, and related midstream activities.",
-    image: "/manus-storage/power-plant_dcc1626d.jpg",
+    image: "/images/service-power.jpg",
   },
   {
     icon: Truck,
     title: "Logistics & Industrial Support",
     description: "Transportation, haulage, and warehousing. Import and export of equipment, machinery, and spares. Lease, hire, and manufacturing support.",
-    image: "/manus-storage/pipeline-construction_fe7f0a5a.jpg",
+    image: "/images/service-logistics.jpg",
   },
   {
     icon: Shield,
     title: "Marine Security & Safety",
     description: "Ballistic and non-ballistic security vessel operations. Safety equipment supply, security surveillance, and site services for offshore installations.",
-    image: "/manus-storage/marine-ops_7c647b2e.jpg",
+    image: "/images/service-security.jpg",
   },
 ];
 
