@@ -56,7 +56,7 @@ export default function ContactSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/manus-storage/support-vessel_abb6f437.png"
+          src="/images/about-vessel.jpg"
           alt="Support vessel"
           className="w-full h-full object-cover opacity-10"
         />
