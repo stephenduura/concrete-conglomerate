@@ -80,7 +80,7 @@ export default function CaseStudies() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 150, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
               className="group relative flex flex-col justify-between bg-[#1D1D1D] border border-white/5 hover:border-[#C41E24]/30 rounded-lg p-6 md:p-8 transition-all duration-500 hover:bg-[#202020] hover:shadow-xl"
             >
               {/* Card top elements */}
